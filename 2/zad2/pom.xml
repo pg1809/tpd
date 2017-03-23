@@ -26,11 +26,18 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ftims.ipd.zad1.Program</mainClass>
+                            <mainClass>ftims.tpd.zad2.Program</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.joptimizer</groupId>
+            <artifactId>joptimizer</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+    </dependencies>
 </project>
