@@ -7,9 +7,9 @@ import java.util.function.Predicate;
 /**
  * Created by Piotr on 2017-03-11.
  */
-public class ArraysFunctions {
+class ArraysFunctions {
 
-    public static int indexOfMaxElement(double[] array) {
+    static int indexOfMaxElement(double[] array) {
         int idxOfMax = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > array[idxOfMax]) {
@@ -19,7 +19,7 @@ public class ArraysFunctions {
         return idxOfMax;
     }
 
-    public static int indexOfMinElement(double[] array) {
+    static int indexOfMinElement(double[] array) {
         int idxOfMin = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] < array[idxOfMin]) {
