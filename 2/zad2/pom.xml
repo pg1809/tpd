@@ -35,9 +35,9 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>com.joptimizer</groupId>
-            <artifactId>joptimizer</artifactId>
-            <version>3.5.1</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
         </dependency>
     </dependencies>
 </project>

@@ -8,8 +8,6 @@ import java.util.Scanner;
  */
 public class Program {
 
-    private static final GameSolver solver = new GameSolver();
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int firstPlayerStrategiesNum = scanner.nextInt();
@@ -22,9 +20,10 @@ public class Program {
             }
         }
 
-        GameSolution solution = solver.solveGame(payOffMatrix);
+        Game game = new Game(payOffMatrix);
+        GameSolution solution = game.getSolution();
         System.out.println("Game value: " + solution.gameValue);
         System.out.println("First player strategies' frequencies: " + Arrays.toString(solution.firstPlayerStrategyFrequencies));
-        System.out.println("Second player strategies frequencies: " + Arrays.toString(solution.secondPlayerStrategyFrequencies));
+        System.out.println("Second player strategies' frequencies: " + Arrays.toString(solution.secondPlayerStrategyFrequencies));
     }
 }
