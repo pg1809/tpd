@@ -6,14 +6,9 @@ import java.util.*;
 
 public class Program {
 
+    private static final double DEFAULT_CAUTION_COEFF = 0.5;
+
     public static void main(String[] args) {
-
-        if (args.length == 0) {
-            System.err.println("Criterion name unspecified. Exiting with error");
-            System.exit(1);
-        }
-
-        String criterionArg = args[0];
 
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.getDefault());
@@ -28,8 +23,10 @@ public class Program {
             }
         }
 
+        String criterionName = scanner.next();
+
         Criterion criterion = null;
-        switch (criterionArg) {
+        switch (criterionName) {
         case "wald":
             criterion = new WaldCriterion();
             break;
@@ -37,13 +34,22 @@ public class Program {
             criterion = new OptimisticCriterion();
             break;
         case "hurwicz":
-            double cautionCoefficient = scanner.nextDouble();
+            double cautionCoefficient;
+            if (scanner.hasNext()) {
+                cautionCoefficient = scanner.nextDouble();
+            } else {
+                cautionCoefficient = DEFAULT_CAUTION_COEFF;
+            }
             criterion = new HurwiczCriterion(cautionCoefficient);
             break;
         case "bayes":
             double[] natureStatesProbabilities = new double[natureStatesNum];
-            for (int i = 0; i < natureStatesNum; i++) {
-                natureStatesProbabilities[i] = scanner.nextDouble();
+            if (scanner.hasNext()) {
+                for (int i = 0; i < natureStatesNum; i++) {
+                    natureStatesProbabilities[i] = scanner.nextDouble();
+                }
+            } else {
+                Arrays.fill(natureStatesProbabilities, 1.0 / natureStatesNum);
             }
             criterion = new BayesCriterion(natureStatesProbabilities);
             break;
