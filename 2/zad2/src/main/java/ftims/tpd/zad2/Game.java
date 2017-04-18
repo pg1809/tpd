@@ -7,10 +7,8 @@ import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-/**
- * Created by grzelak on 23-3-17.
- */
 public class Game {
 
     private final int firstPlayerStrategiesNum;
@@ -26,6 +24,11 @@ public class Game {
     }
 
     public GameSolution getSolution() {
+        Optional<GameSolution> clearStrategiesSolution = findClearStrategiesSolution();
+        if (clearStrategiesSolution.isPresent()) {
+            return clearStrategiesSolution.get();
+        }
+
         double smallestPayoffAbs = findSmallestPayoffAbs(payOffMatrix);
         double[][] nonNegativePayOffs = createNonNegativePayOffMatrix(payOffMatrix, smallestPayoffAbs);
 
@@ -39,6 +42,10 @@ public class Game {
         double[] firstPlayerStrategiesFrequencies = Arrays.stream(firstPlayerLpSolution).map(f -> f * v).toArray();
         double[] secondPlayerStrategiesFrequencies = Arrays.stream(secondPlayerLpSolution).map(f -> f * v).toArray();
         return new GameSolution(gameValue, firstPlayerStrategiesFrequencies, secondPlayerStrategiesFrequencies);
+    }
+
+    private Optional<GameSolution> findClearStrategiesSolution() {
+        return Optional.empty();
     }
 
     private double[] solveLpProblemForFirstPlayer(double[][] payOffs) {

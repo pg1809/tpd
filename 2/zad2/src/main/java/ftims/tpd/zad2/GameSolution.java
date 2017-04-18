@@ -1,8 +1,5 @@
 package ftims.tpd.zad2;
 
-/**
- * Created by grzelak on 23-3-17.
- */
 public class GameSolution {
 
     public final double gameValue;

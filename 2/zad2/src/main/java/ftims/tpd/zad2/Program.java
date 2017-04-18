@@ -3,9 +3,6 @@ package ftims.tpd.zad2;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/**
- * Created by grzelak on 23-3-17.
- */
 public class Program {
 
     public static void main(String[] args) {
